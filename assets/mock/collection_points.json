@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "name": "Recicla Central",
+    "vicinity": "Av. La Marina 123",
+    "lat": -12.0825,
+    "lng": -77.0761
+  },
+  {
+    "id": "2",
+    "name": "Eco Punto Miraflores",
+    "vicinity": "Calle Berlin 550",
+    "lat": -12.1223,
+    "lng": -77.0291
+  },
+  {
+    "id": "3",
+    "name": "GreenDrop Pueblo Libre",
+    "vicinity": "Av. Sucre 890",
+    "lat": -12.0770,
+    "lng": -77.0621
+  }
+]

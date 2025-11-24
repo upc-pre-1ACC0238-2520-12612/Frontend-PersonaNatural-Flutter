@@ -45,5 +45,7 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>Usamos tu ubicación para mostrar puntos de acopio cercanos.</string>
 </dict>
 </plist>

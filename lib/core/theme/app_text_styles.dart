@@ -4,7 +4,7 @@ class AppTextStyles {
   // Titulares
   static const TextStyle title24 = TextStyle(
     fontSize: 24,
-    fontWeight: FontWeight.w600, // Inter SemiBold
+    fontWeight: FontWeight.w600,
     fontFamily: 'Inter',
     color: Color(0xFF0F172A),
   );
@@ -16,9 +16,16 @@ class AppTextStyles {
     color: Color(0xFF0F172A),
   );
 
-  // --- Añadido para evitar el error ---
   static const TextStyle title18 = TextStyle(
     fontSize: 18,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Inter',
+    color: Color(0xFF0F172A),
+  );
+
+  // ⭐ NUEVO — para evitar error en puntos de acopio
+  static const TextStyle title16 = TextStyle(
+    fontSize: 16,
     fontWeight: FontWeight.w600,
     fontFamily: 'Inter',
     color: Color(0xFF0F172A),
@@ -27,9 +34,9 @@ class AppTextStyles {
   // Cuerpo
   static const TextStyle body16 = TextStyle(
     fontSize: 16,
-    fontWeight: FontWeight.w400, // Inter Regular
+    fontWeight: FontWeight.w400,
     fontFamily: 'Inter',
-    color: Color(0xFF475569), // text secondary (60%)
+    color: Color(0xFF475569),
   );
 
   static const TextStyle body14 = TextStyle(
@@ -42,7 +49,7 @@ class AppTextStyles {
   // Numerales / KPIs
   static const TextStyle kpi = TextStyle(
     fontSize: 28,
-    fontWeight: FontWeight.w700, // Inter Bold
+    fontWeight: FontWeight.w700,
     fontFamily: 'Inter',
     color: Color(0xFF0F172A),
   );

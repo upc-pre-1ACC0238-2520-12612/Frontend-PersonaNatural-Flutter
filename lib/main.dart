@@ -1,9 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'core/theme/app_colors.dart';
+
+// AUTH
 import 'features/auth/presentation/login_screen.dart';
 
+// DASHBOARD CONTROLLERS
+import 'features/dashboard/presentation/controllers/eco_tips_controller.dart';
+import 'features/dashboard/presentation/controllers/collection_points_controller.dart';
+
+// USECASES
+import 'features/dashboard/domain/usecases/get_eco_tips.dart';
+import 'features/dashboard/domain/usecases/get_collection_points.dart';
+
+// REPOSITORIES
+import 'features/dashboard/data/repositories/eco_tips_repository_impl.dart';
+import 'features/dashboard/data/repositories/collection_points_repository_impl.dart';
+
+// DATASOURCES
+import 'features/dashboard/data/datasources/eco_tips_datasource.dart';
+import 'features/dashboard/data/datasources/collection_points_datasource.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        // 🌿 Eco Tips Provider (Acciones sostenibles)
+        ChangeNotifierProvider(
+          create: (_) => EcoTipsController(
+            GetEcoTipsUseCase(
+              EcoTipsRepositoryImpl(
+                EcoTipsDataSource(),
+              ),
+            ),
+          ),
+        ),
+
+        // 📍 Collection Points Provider (Puntos de Acopio)
+        ChangeNotifierProvider(
+          create: (_) => CollectionPointsController(
+            GetCollectionPointsUseCase(
+              CollectionPointsRepositoryImpl(
+                CollectionPointsDataSource(),
+              ),
+            ),
+          ),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -26,7 +73,9 @@ class MyApp extends StatelessWidget {
           foregroundColor: AppColors.onPrimary,
         ),
       ),
-      home: const LoginScreen(), // 💚 Primera pantalla
+
+      // 💚 Tu pantalla inicial sigue siendo login
+      home: const LoginScreen(),
     );
   }
 }
