@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'core/services/fake_backend_service.dart';
 import 'core/theme/app_colors.dart';
 
 // AUTH
@@ -9,6 +10,8 @@ import 'features/auth/presentation/login_screen.dart';
 // DASHBOARD CONTROLLERS
 import 'features/dashboard/presentation/controllers/eco_tips_controller.dart';
 import 'features/dashboard/presentation/controllers/collection_points_controller.dart';
+import 'features/dashboard/presentation/controllers/reports_controller.dart';
+import 'features/dashboard/presentation/controllers/rewards_controller.dart'; // 👈 AGRÉGALO
 
 // USECASES
 import 'features/dashboard/domain/usecases/get_eco_tips.dart';
@@ -26,7 +29,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        // 🌿 Eco Tips Provider (Acciones sostenibles)
+        // 🌿 Eco Tips Provider
         ChangeNotifierProvider(
           create: (_) => EcoTipsController(
             GetEcoTipsUseCase(
@@ -37,7 +40,7 @@ void main() {
           ),
         ),
 
-        // 📍 Collection Points Provider (Puntos de Acopio)
+        // 📍 Collection Points Provider
         ChangeNotifierProvider(
           create: (_) => CollectionPointsController(
             GetCollectionPointsUseCase(
@@ -47,6 +50,19 @@ void main() {
             ),
           ),
         ),
+
+        // 🎁 Rewards Provider
+        ChangeNotifierProvider(
+          create: (_) => RewardsController(
+            FakeBackendService(),
+          )..init(),
+        ),
+
+        // 📄 REPORTS PROVIDER (FALTABA)
+        ChangeNotifierProvider(
+          create: (ctx) => ReportsController(ctx.read<RewardsController>()),
+        )
+
       ],
       child: const MyApp(),
     ),
@@ -74,7 +90,6 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      // 💚 Tu pantalla inicial sigue siendo login
       home: const LoginScreen(),
     );
   }
